@@ -1,0 +1,17 @@
+<div class=" {{ classes }}">
+    <label 
+        class="form-check-label"
+        [id]="checkbox.id"
+    >
+        {{ checkbox.value }}
+    </label>
+    <input
+        id="{{ checkbox.id }}"
+        class="form-check-input"
+        type="checkbox"
+        [name]="checkbox.name"
+        value="{{ checkbox.value }}"
+        (change)="changeCheck()"
+        [checked]="checkbox.isChecked"
+    />
+</div>

@@ -1,0 +1,52 @@
+<div>
+    <h1>Countries</h1>
+
+    <nav>
+        <button 
+            [routerLink]="['/country/generateExam']" 
+            [queryParams]="{continentsChecked}"
+            class="btn btn-lg btn-outline-primary m-2"
+        >
+            Generate exam
+        </button>
+        <button
+            [routerLink]="['/country/question/generate']"
+            class="btn btn-lg btn-outline-primary m-2"
+        >
+            Generate random question
+        </button>
+    </nav>
+
+    <hr />
+
+    <app-continents-checkbox 
+        [inOneLine]="true"
+        [isForm]="false"
+        [continentsChecked]="continentsChecked"
+        (updateCheckoboxesEvent)="getCheckedContinents($event)"
+    />
+
+    <app-number-of-country-select
+        [totalItems]="totalItems"
+        (setItemsPerPageEmit)="setItemsPerPage($event)"
+
+    />
+
+    <hr />
+
+    <app-country-table-component
+        [continentsChecked]="continentsChecked"
+        [currentPage]="currentPage"
+        [itemsPerPage]="itemsPerPage"
+        (setTotalPagesEmit)="setTotalPages($event)"
+        (setTotalItemsEmit)="setTotalItems($event)"
+        (setCurrentPageEmit)="setCurrentPage($event)"
+    />
+
+    <app-pagination
+        [totalPages]="totalPages"
+        [currentPage]="currentPage"
+        [totalItems]="totalItems"
+        (setCurrentPageEmit)="setCurrentPage($event)"
+    />
+</div>

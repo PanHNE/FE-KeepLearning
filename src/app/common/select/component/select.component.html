@@ -1,0 +1,26 @@
+@if(control){
+    <div class="row m-2">
+        <label
+            [for]="select.id"
+            class="col-4 col-sm-5 col-md-4"
+        >
+            {{ select.description }}
+        </label>
+        <select #selectItem
+            [formControl]="control"
+            [id]="select.id"
+            [name]="select.name"
+            class="col-5 col-sm-6 col-md-5"
+            (ngModelChange)="ngChangeValue()"
+        >
+            @for (option of select.options; track $index) {
+                <option 
+                    [value]="option"
+                    [selected]="option === actualOption"
+                >
+                    {{ option }}
+                </option>
+            }
+        </select>
+    </div>
+}
