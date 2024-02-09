@@ -1,5 +1,10 @@
-<select class="form-select" (change)="onSelect($event)">
-  @for(item of itemsOnPage; track item ) {
-    <option [value]="item">{{ item }}</option>
-  }
-</select>
+<div class="row">
+  <label for="number-of-country-on-page" class="col-7 col-form-label">Countries on page:</label>
+  <div class="col-5">
+    <select id="number-of-country-on-page" class="col-sm-8 form-select" (change)="onSelect($event)">
+      @for(item of itemsOnPage; track item ) {
+        <option [value]="item">{{ item }}</option>
+      }
+    </select>
+  </div>
+</div>
