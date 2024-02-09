@@ -19,18 +19,23 @@
 
     <hr />
 
-    <app-continents-checkbox 
-        [inOneLine]="true"
-        [isForm]="false"
-        [continentsChecked]="continentsChecked"
-        (updateCheckoboxesEvent)="getCheckedContinents($event)"
-    />
+    <div class="row">
+        <div class="col-sm-9">
+            <app-continents-checkbox 
+                [inOneLine]="true"
+                [isForm]="false"
+                [continentsChecked]="continentsChecked"
+                (updateCheckoboxesEvent)="getCheckedContinents($event)"
+            />
+        </div>
 
-    <app-number-of-country-select
-        [totalItems]="totalItems"
-        (setItemsPerPageEmit)="setItemsPerPage($event)"
-
-    />
+        <div class="col-sm-3">
+            <app-number-of-country-select
+                [totalItems]="totalItems"
+                (setItemsPerPageEmit)="setItemsPerPage($event)"
+            />
+        </div>
+    </div>
 
     <hr />
 
