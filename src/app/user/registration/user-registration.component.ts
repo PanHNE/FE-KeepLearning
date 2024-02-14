@@ -1,7 +1,9 @@
-import { Component, OnChanges, SimpleChanges, inject } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { UserRegisterForm } from "../forms/userRegister.form";
 import { UserService } from "../services/user.service";
-import { FormsModule, NgModel, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SharingDataService } from "../../country/ui/exam/SharingData.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'user-registration-component',
@@ -16,24 +18,27 @@ import { FormsModule, NgModel, ReactiveFormsModule } from "@angular/forms";
   ]
 })
 export class UserRegistrationComponent {
-  public userRegisterForm = inject(UserRegisterForm).form;
+  private storageName = "Register";
 
+  public userRegisterForm = inject(UserRegisterForm).form;
   public invalidFormControlClass = "form-control is-invalid";
   public validFormControlClass = "form-control is-valid";
   
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private sharingDataService: SharingDataService,
+    private router: Router
   ){}
 
   onSubmit(){
-    console.log("UserRegistrationComponent => onSubmit()");
-
     this.userService.register(this.userRegisterForm).subscribe({
       next: (result) => {
-        console.log(result);
+        this.sharingDataService.setData({type: "success", message: "Now you can log in"}, this.storageName)
+        this.router.navigate(['']);
       },
       error: (err) => {
-        console.log(err);
+        this.sharingDataService.setData({type: "fail", message: "Something went wrong, please try again latter"}, this.storageName)
+        this.router.navigate(['']);
       }
     })
   }
