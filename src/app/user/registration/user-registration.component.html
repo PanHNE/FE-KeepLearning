@@ -1,18 +1,68 @@
-<div class="center">
-  <form class="col-sm-8">
-    <div class="mb-3">
-      <label for="email" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+<div class="h-100 d-flex align-items-center justify-content-center" >
+  <div class="mt-4">
+    <div>
+      <h4>Registration</h4>
     </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password">
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+    <hr>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          [className]="
+            (userRegisterForm.controls.Email.hasError('required') || userRegisterForm.controls.Email.hasError('email'))
+            ? invalidFormControlClass 
+            : validFormControlClass
+          "    
+          id="email"
+          [formControl]="userRegisterForm.controls.Email"  
+        >
+        @if(userRegisterForm.controls.Email.hasError('required')) {
+          <div class="invalid-feedback">Email is required</div>
+        } @else if (userRegisterForm.controls.Email.hasError('email')) {
+          <div class="invalid-feedback">Invalid email</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          type="password"
+          [className]="
+            (userRegisterForm.controls.Password.hasError('required'))
+            ? invalidFormControlClass 
+            : validFormControlClass
+          " 
+          [formControl]="userRegisterForm.controls.Password"
+        >
+        @if(userRegisterForm.controls.Password.hasError('required')) {
+          <div class="invalid-feedback">Password is required.</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="reenterPassword" class="form-label">Reenter password</label>
+        <input
+          id="reenterPassword"
+          type="password"
+          [className]="
+            (userRegisterForm.controls.ReenterPassword.hasError('matching') || userRegisterForm.controls.Password.hasError('required'))
+            ? invalidFormControlClass 
+            : validFormControlClass
+          " 
+          [formControl]="userRegisterForm.controls.ReenterPassword"
+        >
+        @if(userRegisterForm.controls.ReenterPassword.hasError('matching')) {
+          <div class="invalid-feedback">Password not match.</div>
+        }
+      </div>
+      
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!userRegisterForm.valid"
+      >
+        Register
+      </button>
+    </form>
+  </div>
 </div>
