@@ -3,13 +3,12 @@ import { UserService } from "../services/user.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharingDataService } from "../../country/ui/exam/SharingData.service";
 import { Router, RouterLink } from "@angular/router";
-import { UserLogInForm } from "../forms/userLogIn.form";
-
+import { ForgotPasswordForm } from "../forms/forgot-password.form";
 
 @Component({
-  selector: 'user-logIn-component',
-  templateUrl: './user-logIn.component.html',
-  styleUrl: './user-logIn.component.scss',
+  selector: 'forget-password-component',
+  templateUrl: './forgot-password.component.html',
+  styleUrl: './forgot-password.component.scss',
   standalone: true,
   imports: [
     FormsModule,
@@ -17,14 +16,13 @@ import { UserLogInForm } from "../forms/userLogIn.form";
     RouterLink
   ],
   providers: [
-    UserLogInForm
+    ForgotPasswordForm
   ]
 })
-export class UserLogInComponent {
-  private storageLogInName = "LogIn";
-  private storageAuthToken = "AuthToken";
+export class ForgotPasswordComponent {
+  private storageSendEmail = "SendEmail";
 
-  public userLogInForm = inject(UserLogInForm).form;
+  public forgotPasswordForm = inject(ForgotPasswordForm).form;
   public invalidFormControlClass = "form-control is-invalid";
   public validFormControlClass = "form-control is-valid";
   
@@ -35,14 +33,13 @@ export class UserLogInComponent {
   ){}
 
   onSubmit(){
-    this.userService.logIn(this.userLogInForm).subscribe({
+    this.userService.forgotPassword(this.forgotPasswordForm).subscribe({
       next: (result) => {
-        this.sharingDataService.setData({type: "success", message: "You logged in"}, this.storageLogInName);
-        this.sharingDataService.setData(result, this.storageAuthToken);
+        this.sharingDataService.setData({type: "success", message: "You logged in"}, this.storageSendEmail);
         this.router.navigate(['']);
       },
       error: (err) => {
-        this.sharingDataService.setData({type: "fail", message: "Something went wrong, please try again latter"}, this.storageLogInName)
+        this.sharingDataService.setData({type: "fail", message: "Something went wrong, please try again latter"}, this.storageSendEmail)
         this.router.navigate(['']);
       }
     })

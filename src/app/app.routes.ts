@@ -6,8 +6,8 @@ import { ResolveExamComponent } from './country/ui/exam/resolve-exam/resolve-exa
 import { GenerateQuestionComponent } from './country/ui/question/generate/generate-question.component';
 import { ResolveQuestionComponent } from './country/ui/question/resolve/resolve-question.component';
 import { UserRegistrationComponent } from './user/registration/user-registration.component';
-import { UserLogInComponent } from './user/logIn/user-logIn.component';
-import { ForgetPasswordComponent } from './user/forgotPassword/forgot-password.component';
+import { UserLogInComponent } from './user/log-in/user-log-in.component';
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
     {
@@ -53,7 +53,7 @@ export const routes: Routes = [
     {
       title: "Forgotten password",
       path: "user/forgotPassword",
-      component: ForgetPasswordComponent
+      component: ForgotPasswordComponent
     },
     {
       path: "**",
