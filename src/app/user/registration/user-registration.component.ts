@@ -1,5 +1,5 @@
 import { Component, inject } from "@angular/core";
-import { UserRegisterForm } from "../forms/userRegister.form";
+import { UserRegisterForm } from "../forms/user-register.form";
 import { UserService } from "../services/user.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharingDataService } from "../../country/ui/exam/SharingData.service";

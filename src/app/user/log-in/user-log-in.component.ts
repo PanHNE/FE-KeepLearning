@@ -3,10 +3,10 @@ import { UserService } from "../services/user.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharingDataService } from "../../country/ui/exam/SharingData.service";
 import { Router, RouterLink } from "@angular/router";
-import { UserLogInForm } from "../forms/userLogIn.form";
+import { UserLogInForm } from "../forms/user-log-in.form";
 
 @Component({
-  selector: 'user-logIn-component',
+  selector: 'user-log-in-component',
   templateUrl: './user-log-in.component.html',
   styleUrl: './user-log-in.component.scss',
   standalone: true,
