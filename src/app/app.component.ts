@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,7 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     imports: [
       CommonModule, 
       RouterOutlet, 
-      NgbModule
+      NgbModule,
+      RouterLink
     ]
 })
 export class AppComponent {
