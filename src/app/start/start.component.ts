@@ -15,8 +15,8 @@ import { Toastr } from './toastr';
 })
 export class StartComponent implements OnInit {
   private storageName = "Register";
-  
   private storageToastr = '';
+  private privatetoastrTitel = "Registration "
 
   constructor(
     private sharingDataService: SharingDataService,
@@ -28,7 +28,6 @@ export class StartComponent implements OnInit {
     if (this.storageToastr !== undefined){
       this.showToastr(this.storageToastr);
     }
-    this.toastrService.success("asdasdasd", "asdasdasd");
   }
 
   showToastr(jsonToParse: string) {
@@ -36,12 +35,12 @@ export class StartComponent implements OnInit {
 
     switch(toastr.type) {
       case 'success': {
-        this.toastrService.success(toastr.message, toastr.type);
+        this.toastrService.success(toastr.message, this.privatetoastrTitel + toastr.type);
         this.sharingDataService.clearUserSettings(this.storageName);
         break;
       }
       case 'fail': {
-        this.toastrService.error(toastr.message, toastr.type);
+        this.toastrService.error(toastr.message, this.privatetoastrTitel + toastr.type);
         this.sharingDataService.clearUserSettings(this.storageName);
         break;
       }

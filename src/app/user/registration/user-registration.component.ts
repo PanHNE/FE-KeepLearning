@@ -3,15 +3,17 @@ import { UserRegisterForm } from "../forms/userRegister.form";
 import { UserService } from "../services/user.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharingDataService } from "../../country/ui/exam/SharingData.service";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'user-registration-component',
   templateUrl: './user-registration.component.html',
+  styleUrl: './user-registration.component.scss',
   standalone: true,
   imports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   providers: [
     UserRegisterForm

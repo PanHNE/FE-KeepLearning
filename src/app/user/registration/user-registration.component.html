@@ -1,4 +1,4 @@
-<div class="h-100 d-flex align-items-center justify-content-center" >
+<div class="h-100 d-flex align-items-center justify-content-center" >  
   <div class="mt-4">
     <div>
       <h4>Registration</h4>
@@ -55,14 +55,19 @@
           <div class="invalid-feedback">Password not match.</div>
         }
       </div>
-      
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="!userRegisterForm.valid"
-      >
-        Register
-      </button>
+      <div class="row m-2">
+        <button
+          type="submit"
+          class="btn btn-primary col-5 text-center"
+          [disabled]="!userRegisterForm.valid"
+        >
+          Register
+        </button>
+        <div class="col-7">
+          <div><a [routerLink]="" class="link">Log in</a></div>
+          <div><a [routerLink]="" class="link">Forget password?</a></div>
+        </div>
+      </div>
     </form>
   </div>
 </div>
