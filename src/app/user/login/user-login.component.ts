@@ -21,7 +21,8 @@ import { UserLogInForm } from "../forms/userLogIn.form";
   ]
 })
 export class UserLogInComponent {
-  private storageName = "LogIn";
+  private storageLogInName = "LogIn";
+  private storageAuthToken = "AuthToken";
 
   public userLogInForm = inject(UserLogInForm).form;
   public invalidFormControlClass = "form-control is-invalid";
@@ -36,12 +37,12 @@ export class UserLogInComponent {
   onSubmit(){
     this.userService.logIn(this.userLogInForm).subscribe({
       next: (result) => {
-        this.sharingDataService.setData({type: "success", message: "You logged"}, this.storageName);
-        console.log("UserLogInComponent" + result);
+        this.sharingDataService.setData({type: "success", message: "You logged in"}, this.storageLogInName);
+        this.sharingDataService.setData(result, this.storageAuthToken);
         this.router.navigate(['']);
       },
       error: (err) => {
-        this.sharingDataService.setData({type: "fail", message: "Something went wrong, please try again latter"}, this.storageName)
+        this.sharingDataService.setData({type: "fail", message: "Something went wrong, please try again latter"}, this.storageLogInName)
         this.router.navigate(['']);
       }
     })

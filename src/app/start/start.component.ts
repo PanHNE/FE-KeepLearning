@@ -14,9 +14,11 @@ import { Toastr } from './toastr';
   ]
 })
 export class StartComponent implements OnInit {
-  private storageName = "Register";
-  private storageToastr = '';
-  private privatetoastrTitel = "Registration "
+  private storageRegisterName = "Register";
+  private storageAuthToken = "AuthToken"
+  private authToken = undefined;
+  private storageToastr = undefined;
+  private privateToastrTitel = "Registration "
 
   constructor(
     private sharingDataService: SharingDataService,
@@ -24,10 +26,11 @@ export class StartComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.storageToastr = this.sharingDataService.getData(this.storageName);
+    this.storageToastr = this.sharingDataService.getData(this.storageRegisterName);
     if (this.storageToastr !== undefined){
       this.showToastr(this.storageToastr);
     }
+    this.authToken = this.sharingDataService.getData(this.storageAuthToken);
   }
 
   showToastr(jsonToParse: string) {
@@ -35,13 +38,13 @@ export class StartComponent implements OnInit {
 
     switch(toastr.type) {
       case 'success': {
-        this.toastrService.success(toastr.message, this.privatetoastrTitel + toastr.type);
-        this.sharingDataService.clearUserSettings(this.storageName);
+        this.toastrService.success(toastr.message, this.privateToastrTitel + toastr.type);
+        this.sharingDataService.clearUserSettings(this.storageRegisterName);
         break;
       }
       case 'fail': {
-        this.toastrService.error(toastr.message, this.privatetoastrTitel + toastr.type);
-        this.sharingDataService.clearUserSettings(this.storageName);
+        this.toastrService.error(toastr.message, this.privateToastrTitel + toastr.type);
+        this.sharingDataService.clearUserSettings(this.storageRegisterName);
         break;
       }
     }
