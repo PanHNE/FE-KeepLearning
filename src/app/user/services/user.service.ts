@@ -40,4 +40,19 @@ export class UserService {
       },        
     );
   }
+
+  forgotPassword(userLoginForm: FormGroup) {
+    let serializedForm = JSON.stringify(userLoginForm.value);
+    
+    return this.http.post<string>(
+      this.URL + '/forgotPassword',
+      serializedForm,
+      {
+        headers: new HttpHeaders({
+          "Content-Type": 'application/json; charset=utf-8',
+          "Accept": "*/*"
+        })
+      },        
+    );
+  }
 }

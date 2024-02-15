@@ -7,6 +7,7 @@ import { GenerateQuestionComponent } from './country/ui/question/generate/genera
 import { ResolveQuestionComponent } from './country/ui/question/resolve/resolve-question.component';
 import { UserRegistrationComponent } from './user/registration/user-registration.component';
 import { UserLogInComponent } from './user/logIn/user-logIn.component';
+import { ForgetPasswordComponent } from './user/forgotPassword/forgot-password.component';
 
 export const routes: Routes = [
     {
@@ -48,6 +49,11 @@ export const routes: Routes = [
       title: "Log in",
       path: "user/logIn",
       component: UserLogInComponent
+    },
+    {
+      title: "Forgotten password",
+      path: "user/forgotPassword",
+      component: ForgetPasswordComponent
     },
     {
       path: "**",

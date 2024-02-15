@@ -42,14 +42,14 @@
       <div class="row m-2">
         <button
           type="submit"
-          class="btn btn-primary col-5 text-center"
+          class="btn btn-primary col-4 text-center"
           [disabled]="!userLogInForm.valid"
         >
           Log in
         </button>
-        <div class="col-7">
+        <div class="col-8">
           <div><a [routerLink]="['/user/register']" class="link">Register</a></div>
-          <div><a [routerLink]="" class="link">Forget password?</a></div>
+          <div><a [routerLink]="['/user/forgotPassword']" class="link">Forgot password?</a></div>
         </div>
       </div>
     </form>
