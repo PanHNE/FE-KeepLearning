@@ -1,0 +1,57 @@
+<div class="h-100 d-flex align-items-center justify-content-center" >  
+  <div class="mt-4">
+    <div>
+      <h4>Login</h4>
+    </div>
+    <hr>
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          [className]="
+            (userLogInForm.controls.Email.hasError('required') || userLogInForm.controls.Email.hasError('email'))
+            ? invalidFormControlClass 
+            : validFormControlClass
+          "    
+          id="email"
+          [formControl]="userLogInForm.controls.Email"  
+        >
+        @if(userLogInForm.controls.Email.hasError('required')) {
+          <div class="invalid-feedback">Email is required</div>
+        } @else if (userLogInForm.controls.Email.hasError('email')) {
+          <div class="invalid-feedback">Invalid email</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          type="password"
+          [className]="
+            (userLogInForm.controls.Password.hasError('required'))
+            ? invalidFormControlClass 
+            : validFormControlClass
+          " 
+          [formControl]="userLogInForm.controls.Password"
+        >
+        @if(userLogInForm.controls.Password.hasError('required')) {
+          <div class="invalid-feedback">Password is required.</div>
+        }
+      </div>
+      <div class="row m-2">
+        <button
+          type="submit"
+          class="btn btn-primary col-5 text-center"
+          [disabled]="!userLogInForm.valid"
+        >
+          Log in
+        </button>
+        <div class="col-7">
+          <div><a [routerLink]="['/user/register']" class="link">Register</a></div>
+          <div><a [routerLink]="" class="link">Forget password?</a></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

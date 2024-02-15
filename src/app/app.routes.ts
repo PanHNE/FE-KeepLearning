@@ -6,6 +6,7 @@ import { ResolveExamComponent } from './country/ui/exam/resolve-exam/resolve-exa
 import { GenerateQuestionComponent } from './country/ui/question/generate/generate-question.component';
 import { ResolveQuestionComponent } from './country/ui/question/resolve/resolve-question.component';
 import { UserRegistrationComponent } from './user/registration/user-registration.component';
+import { UserLogInComponent } from './user/logIn/user-logIn.component';
 
 export const routes: Routes = [
     {
@@ -42,6 +43,11 @@ export const routes: Routes = [
       title: "Registration",
       path: "user/register",
       component: UserRegistrationComponent
+    },
+    {
+      title: "Log in",
+      path: "user/logIn",
+      component: UserLogInComponent
     },
     {
       path: "**",
