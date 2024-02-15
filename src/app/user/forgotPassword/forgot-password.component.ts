@@ -7,7 +7,7 @@ import { ForgotPasswordForm } from "../forms/forgot-password.form";
 
 
 @Component({
-  selector: 'user-logIn-component',
+  selector: 'forget-password-component',
   templateUrl: './forgot-password.component.html',
   styleUrl: './forgot-password.component.scss',
   standalone: true,
